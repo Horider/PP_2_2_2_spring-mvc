@@ -8,8 +8,8 @@
 <body>
 
 <div
-        th:each="cars : ${cars}">
-    <a th:href="@{/cars/{id}(id=${cars.getCarsCount()})}" th:text="${cars.getName()}">car</a>
+        th:each="car : ${cars}">
+    <a th:href="@{/cars/{id}(id=${car.getCount()})}" th:text="${car.getName()}">car</a>
 </div>
 
 </body>

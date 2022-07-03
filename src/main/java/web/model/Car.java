@@ -6,14 +6,14 @@ import org.springframework.stereotype.Component;
 public class Car {
 
     private String name;
-    private int carsCount;
+    private int count;
     private int dateOfProduction;
 
     public Car() {
     }
 
-    public Car(int carsCount, String name, int dateOfProduction) {
-        this.carsCount = carsCount;
+    public Car(int count, String name, int dateOfProduction) {
+        this.count = count;
         this.name = name;
         this.dateOfProduction = dateOfProduction;
     }
@@ -26,12 +26,12 @@ public class Car {
         this.name = name;
     }
 
-    public int getCarsCount() {
-        return carsCount;
+    public int getCount() {
+        return count;
     }
 
-    public void setCarsCount(int carsCount) {
-        this.carsCount = carsCount;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public int getDateOfProduction() {
@@ -46,7 +46,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "name='" + name + '\'' +
-                ", series=" + carsCount +
+                ", series=" + count +
                 ", dateOfProduction=" + dateOfProduction +
                 '}';
     }
