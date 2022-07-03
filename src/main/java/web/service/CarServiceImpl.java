@@ -5,11 +5,13 @@ import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements CarService {
     private static int CARS_COUNT;
     private List<Car> listCars;
+
     {
         listCars = new ArrayList<>();
         listCars.add(new Car(++CARS_COUNT, "Audi", 1991));
@@ -25,9 +27,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car getCatByNumber (int id) {
-        return listCars.stream().filter(car -> car.getId() == id).findAny().orElse(null);
+    public List<Car> listCars (int carsCount) {
+        return listCars.stream().limit(carsCount).collect(Collectors.toList());
     }
-
-
 }
+

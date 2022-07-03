@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,12 +9,8 @@ import web.service.CarServiceImpl;
 
 @Controller
 public class CarController {
-
-    private final CarServiceImpl carServiceImpl;
-
-    public CarController(CarServiceImpl carServiceImpl) {
-        this.carServiceImpl = carServiceImpl;
-    }
+    @Autowired
+    CarServiceImpl carServiceImpl;
 
     @GetMapping("/cars")
     public String printAllCars (ModelMap model) {
@@ -21,9 +18,10 @@ public class CarController {
         return "all_cars";
     }
 
-    @GetMapping("/{id}")
-    public String outputTheNumberOfMachines (@PathVariable("id") int id, ModelMap model) {
-        model.addAttribute("carsonnumbers", carServiceImpl.getCatByNumber(id));
+    @GetMapping("/car/{carsCount}")
+    public String outputTheNumberOfMachines (@PathVariable("carsCount") int carsCount, ModelMap model) {
+        model.addAttribute("cars_numbers", carServiceImpl.listCars(carsCount));
         return "cars_numbers";
     }
+
 }
